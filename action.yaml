@@ -1,0 +1,10 @@
+name: 'Sonar get status of PR'
+description: 'get sonar cloud status and break workflow if failed'
+inputs:
+  SONAR_TOKEN:
+    required: true
+  SONAR_PROJECT:
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
