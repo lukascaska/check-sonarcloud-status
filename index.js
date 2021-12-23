@@ -19,6 +19,8 @@ try {
             throw new Error(`Sonarcloud status: FAILED, please check sonar cloud for more details`)
         } 
         console.log(`Sonarcloud status: SUCCESS`);
+    }).catch(error => {
+        throw error
     })
   } catch (error) {
     core.setFailed(error.message);
