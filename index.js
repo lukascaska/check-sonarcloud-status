@@ -13,12 +13,10 @@ axios.get(`https://sonarcloud.io/api/project_pull_requests/list?project=${sonarP
     const prNumber = github.context.issue.number;
     const PrDetailsPosition = pullRequests.findIndex(pr => pr.key === String(prNumber))
     const PRDetails = pullRequests[PrDetailsPosition]
-    console.log(PRDetails.status.qualityGateStatus)
     if (PRDetails.status.qualityGateStatus === "ERROR") {
         throw new Error(`Sonarcloud status: FAILED, please check sonar cloud for more details`)
     }
-    console.log(`Sonarcloud status: SUCCESS`);
+    core.info(`Sonarcloud status: SUCCESS`);
 }).catch(error => {
-    core.warning(JSON.stringify(error))
     core.setFailed(error.message);
 })
