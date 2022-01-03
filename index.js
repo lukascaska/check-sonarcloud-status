@@ -2,8 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const { default: axios } = require('axios');
 
-const sonarToken = core.getInput('SONAR_TOKEN');
-const sonarProject = core.getInput('SONAR_PROJECT');
+const sonarToken = core.getInput('sonarToken');
+const sonarProject = core.getInput('sonarProject');
 axios.get(`https://sonarcloud.io/api/project_pull_requests/list?project=${sonarProject}`, {
     headers: {
         Authorization: `Bearer ${sonarToken}`
