@@ -19,5 +19,6 @@ axios.get(`https://sonarcloud.io/api/project_pull_requests/list?project=${sonarP
     }
     console.log(`Sonarcloud status: SUCCESS`);
 }).catch(error => {
+    core.warning(JSON.stringify(error))
     core.setFailed(error.message);
 })
